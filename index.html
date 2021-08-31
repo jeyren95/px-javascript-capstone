@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Comic Reader App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css" />
+
+    </head>
+    <body>  
+        <div>
+            <label for="number-of-displayed-comics">Select number of comics to display</label>
+            <select id="number-of-displayed-comics" name="number-of-displayed-comics" value="3">
+                <option value="3">3 comics</option>
+                <option value="1">1 comic</option>
+                <option value="5">5 comics</option>
+            </select>
+        </div>
+
+        <form> 
+            <label for="comic-number">Which comic number would you like to see?</label>
+            <input id="comic-number" type="number" name="comic-number" value="" />
+            <button type="submit">Submit</button>      
+        </form>
+
+        <h1 class="loading-header">Loading...</h1>
+
+        <div class="comics">
+            
+            <div class="row">
+                <div class="col comic hidden">
+                    <h1></h1>
+                    <h3></h3>
+                    <img src="" alt="" />
+                </div>
+                <div class="col comic">
+                    <h1></h1>
+                    <h3></h3>
+                    <img src="" alt="" />
+                </div>
+                <div class="col comic">
+                    <h1></h1>
+                    <h3></h3>
+                    <img src="" alt="" />
+                </div>
+                <div class="col comic">
+                    <h1></h1>
+                    <h3></h3>
+                    <img src="" alt="" />
+                </div>
+                <div class="col comic hidden">
+                    <h1></h1>
+                    <h3></h3>
+                    <img src="" alt=""/>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <button id="previous" type="button">PREVIOUS</button>
+            <button id="next" type="button">NEXT</button>
+        </div>
+
+
+
+        <script src="index.js"></script>
+    </body>
+</html>
