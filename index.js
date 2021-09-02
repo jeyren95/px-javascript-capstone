@@ -14,7 +14,7 @@
 
     /******** API handlers  ********/
     // handle fetching latest comic
-    const getLatestComic = () => 
+    const fetchLatestComic = () => 
         fetch("https://xkcd.now.sh/?comic=latest")
         .then((res) => {
             return res.json()
@@ -24,7 +24,7 @@
 
     // handle fetching comic based on number
     // check comic number first, if it exceeds the latest comic number, or if it is less than 0
-    const getComic = (num) => 
+    const fetchComic = (num) => 
         fetch(`https://xkcd.now.sh/?comic=${checkComicNum(num)}`)
         .then((res) => {
             return res.json()
@@ -64,7 +64,7 @@
         let promises = []
 
         for (let k = num - 2; k < num - 2 + comics.length; k++) {
-            promises.push(getComic(k))
+            promises.push(fetchComic(k))
         }
 
         Promise.all(promises)
@@ -168,7 +168,7 @@
         // get the latest comic
         // set the latest comic variable as the json response of the promise 
         // get the rest of the comics before and after it
-    getLatestComic()
+    fetchLatestComic()
     .then((data) => latestComicNum = data.num)
     .then((latestComicNum) => loadComics(latestComicNum))
 })()
