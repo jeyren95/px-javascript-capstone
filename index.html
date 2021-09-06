@@ -11,57 +11,37 @@
     </head>
     <body>  
         <div>
-            <label for="number-of-displayed-comics">Select number of comics to display</label>
-            <select id="number-of-displayed-comics" name="number-of-displayed-comics" value="3">
+            <button id="previous" type="button">PREVIOUS</button>
+            <button id="next" type="button">NEXT</button>
+        </div>
+
+        <div>
+            <label for="num-displayed-comics">Select number of comics to display</label>
+            <select id="num-displayed-comics" name="num-displayed-comics">
                 <option value="3">3 comics</option>
                 <option value="1">1 comic</option>
                 <option value="5">5 comics</option>
             </select>
         </div>
 
-        <form> 
-            <label for="comic-number">Which comic number would you like to see?</label>
-            <input id="comic-number" type="number" name="comic-number" value="" />
-            <button type="submit">Submit</button>      
+        <form id="comic-num-form"> 
+            <label for="comic-num">Which comic number would you like to see?</label>
+            <input id="comic-num" type="number" name="comic-num" value="" />
+            
+            <button type="submit">Submit</button>  
+            <span id="error-msg" class="hidden">Sorry, please select a valid comic number</span>    
         </form>
 
-        <h1 class="loading-header">Loading...</h1>
-
-        <div class="comics">
-            
+        <div class="loading-sign">
+            <h1>Loading...</h1>
+        </div>
+        
+        <div class="comics">     
             <div class="row">
-                <div class="col comic hidden">
-                    <h1></h1>
-                    <h3></h3>
-                    <img src="" alt="" />
-                </div>
-                <div class="col comic">
-                    <h1></h1>
-                    <h3></h3>
-                    <img src="" alt="" />
-                </div>
-                <div class="col comic">
-                    <h1></h1>
-                    <h3></h3>
-                    <img src="" alt="" />
-                </div>
-                <div class="col comic">
-                    <h1></h1>
-                    <h3></h3>
-                    <img src="" alt="" />
-                </div>
-                <div class="col comic hidden">
-                    <h1></h1>
-                    <h3></h3>
-                    <img src="" alt=""/>
-                </div>
             </div>
         </div>
 
-        <div>
-            <button id="previous" type="button">PREVIOUS</button>
-            <button id="next" type="button">NEXT</button>
-        </div>
+
 
 
 
