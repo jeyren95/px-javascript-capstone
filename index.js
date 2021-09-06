@@ -1,8 +1,9 @@
 (() => {
-    var latestComicNum;
-    var currentComicNum;
+    let latestComicNum;
+    let currentComicNum;
     const displayComicsSetter = document.querySelector("#num-displayed-comics")
-    var numDisplayedComics = Number(displayComicsSetter.value)
+    let numDisplayedComics = Number(displayComicsSetter.value)
+    let controller;
 
     /******** API handlers  ********/
     // fetch latest comic
@@ -23,12 +24,13 @@
     }
 
     // fetch comic based on number
-    const fetchComic = (num) => 
-        fetch(`https://xkcd.now.sh/?comic=${checkComicNum(num)}`)
+    const fetchComic = (num) => {
+        controller = new AbortController()
+
+        return fetch(`https://xkcd.now.sh/?comic=${checkComicNum(num)}`, {signal: controller.signal})
         .then((res) => res.json())
         .catch((err) => console.log(err))
-
-
+    }
 
     /**** Fetch and display all comics ****/
     const displayComics = (fetchedComics) => {
@@ -45,7 +47,6 @@
     }
 
     const fetchAllComics = () => {
-        console.log("fetching...")
         document.querySelector(".loading-sign").classList.remove("hidden")
         document.querySelector(".comics .row").innerHTML = ""
 
@@ -67,11 +68,13 @@
     const prevButton = document.querySelector("#previous")
 
     nextButton.addEventListener("click", () => {
+        controller.abort()
         currentComicNum += numDisplayedComics
         fetchAllComics()
     })
 
     prevButton.addEventListener("click", () => {
+        controller.abort()
         currentComicNum -= numDisplayedComics 
         fetchAllComics()
     })
