@@ -34,21 +34,20 @@
 
     /**** Fetch and display all comics ****/
     const displayComics = (fetchedComics) => {
-        for (i = 0; i < fetchedComics.length; i ++) {
-            document.querySelector(".comics .row").innerHTML += 
-            `<div id=${fetchedComics[i].num}>
-                <h1>${fetchedComics[i].title}</h1>
-                <h2>${fetchedComics[i].num}</h2>
-                <img src=${fetchedComics[i].img} alt="" />
-            </div>`
-        }
-
         document.querySelector(".loading-sign").classList.add("hidden")
+
+        fetchedComics.forEach((comic) => {
+            document.querySelector(".comics").innerHTML += 
+            `<div id=${comic.num} class="comic">
+                <h3>${comic.num}. ${comic.title}</h3>
+                <img src=${comic.img} alt="" />
+            </div>`
+        })  
     }
 
     const fetchAllComics = () => {
         document.querySelector(".loading-sign").classList.remove("hidden")
-        document.querySelector(".comics .row").innerHTML = ""
+        document.querySelector(".comics").innerHTML = ""
 
         let startingComicNum = currentComicNum - Math.floor(numDisplayedComics/2)       
         let promises = []
@@ -58,8 +57,7 @@
             startingComicNum++
         }
 
-        Promise.all(promises)
-        .then((fetchedComics) => displayComics(fetchedComics))
+        return Promise.all(promises)
     }
 
 
@@ -71,12 +69,14 @@
         controller.abort()
         currentComicNum += numDisplayedComics
         fetchAllComics()
+        .then((fetchedComics) => displayComics(fetchedComics))
     })
 
     prevButton.addEventListener("click", () => {
         controller.abort()
         currentComicNum -= numDisplayedComics 
         fetchAllComics()
+        .then((fetchedComics) => displayComics(fetchedComics))
     })
 
 
@@ -84,6 +84,7 @@
     displayComicsSetter.addEventListener("change", (e) => {
         numDisplayedComics = e.target.value
         fetchAllComics()
+        .then((fetchedComics) => displayComics(fetchedComics))
     })
 
 
@@ -105,18 +106,20 @@
         } else {
             document.querySelector("#error-msg").classList.add("hidden")
             fetchAllComics()
+            .then((fetchedComics) => displayComics(fetchedComics))
         }
         comicNumInput.value = ""  
         comicNumInput.focus()  
     })
 
 
-
+    /*** On load  ***/
     fetchLatestComic()
     .then((data) => {
         latestComicNum = data.num
         currentComicNum = data.num
     })
-    .then(() => fetchAllComics())
+    .then(fetchAllComics)
+    .then((fetchedComics) => displayComics(fetchedComics))
 
 })()
