@@ -7,51 +7,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="styles.css" />
-
     </head>
     <body>  
         <header>
-            
-            <h1>Comic Reader<i class="book icon"></i></h1>
+            <div class="ui container">
+                <h1>Comic Reader<i class="book icon"></i></h1>
+            </div>
         </header>
       
         <main>
-
-            <div class="display-options">
-                <label for="num-displayed-comics">Select number of comics to display</label>
-                <select id="num-displayed-comics" name="num-displayed-comics">
-                    <option value="3">3 comics</option>
-                    <option value="1">1 comic</option>
-                    <option value="5">5 comics</option>
-                </select>
-            </div>
-    
-            <form id="comic-num-form"> 
-                <label for="comic-num">Which comic number would you like to see?</label>
-                <input id="comic-num" type="number" name="comic-num" value="" />
+            <div class="ui container">
+                <!----- Number of comics to display ----->
+                <div class="ui form display-options">
+                    <div class="field">
+                        <label for="num-displayed-comics">Select number of comics to display</label>
+                        <select id="num-displayed-comics" name="num-displayed-comics">
+                            <option value="3">3 comics</option>
+                            <option value="1">1 comic</option>
+                            <option value="5">5 comics</option>
+                        </select>
+                    </div>
+                </div>
                 
-                <button class="btn btn-outline-success" type="submit">Submit</button>  
-                <span id="error-msg" class="hidden">Sorry, please select a valid comic number</span>    
-            </form>
+                <!----- Select comic number form ----->
+                <form id="comic-num-form" class="ui form"> 
+                    <div class="field">
+                
+                            <label for="comic-num">Which comic number would you like to see?</label>
+                            <input id="comic-num" type="number" name="comic-num" value="" />
 
-            <div class="buttons"> 
-                <button id="previous" class="btn btn-outline-secondary" type="button">PREVIOUS</button>
-                <button id="next" class="btn btn-outline-secondary" type="button">NEXT</button>
+                    </div>   
+                    <p id="error-msg" class="hidden">Sorry, please select a valid comic number.</p>   
+                    <button class="ui button teal" type="submit">Go</button>     
+                    
+      
+                </form>
+
+                <!----- Next and previous buttons ----->
+                <div class="buttons"> 
+                    <button id="previous" class="ui button teal" type="button"><i class="arrow alternate circle left outline icon"></i>PREVIOUS</button>
+                    <button id="next" class="ui button teal" type="button">NEXT<i class="arrow alternate circle right outline icon "></i></button>
+                </div>
+
+                <!----- Loading sign ----->
+                <div class="loading-sign">               
+                    <div class="ui active centered inline text loader">
+                        <h5>Loading...</h5>
+                    </div>
+                </div> 
+        
+                <!----- Comics ----->
+                <div class="comics">   
+                </div>
             </div>
 
-            <div class="loading-sign">
-                <h1>Loading...</h1>
-            </div> 
-    
-  
-            <div class="comics">    
-            </div>
         </main>
-
-
-
-
-
+   
 
         <script src="index.js"></script>
     </body>

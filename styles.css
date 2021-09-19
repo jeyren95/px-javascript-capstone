@@ -1,22 +1,52 @@
-header, main {
-    padding: 2% 8%;
+.container {
+    padding: 2% 0%;
 }
 
+/**** Header *****/
 header {
-    
+    background-color: #00b5ad;
+}
+
+header h1 {
+    color: white;
+}
+
+header .book {
+    color: white;
+    margin-left: 1%;
+}
+
+
+/**** Display options ****/
+.display-options, #comic-num-form {
+    margin-bottom: 3%;
+}
+
+.display-options .field {
+    width: 40%;
+}
+
+
+/**** Select comic number form ****/
+#error-msg {
+    color: #9f3a38;
+}
+
+#comic-num-form .field {
+    width: 40%;
 }
 
 
 
 
-/**** Buttons ****/
+/**** Next and previous buttons ****/
 .buttons {
     text-align: center;
     margin-bottom: 5%;
 }
 
-.buttons button {
-    margin: 0 1%;
+.buttons #previous, .button #next {
+    margin: 0 2%;
 }
 
 
@@ -24,6 +54,7 @@ header {
 .hidden {
     display: none;
 }
+
 
 .comics {
     display: flex;
@@ -35,4 +66,7 @@ header {
     margin-bottom: 5%;
     flex-basis: auto;
 }
+
+
+
 

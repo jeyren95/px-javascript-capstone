@@ -37,11 +37,14 @@
         document.querySelector(".loading-sign").classList.add("hidden")
 
         fetchedComics.forEach((comic) => {
-            document.querySelector(".comics").innerHTML += 
-            `<div id=${comic.num} class="comic">
-                <h3>${comic.num}. ${comic.title}</h3>
-                <img src=${comic.img} alt="" />
-            </div>`
+            if (comic) {
+                document.querySelector(".comics").innerHTML += 
+                `<div id=${comic.num} class="comic">
+                    <h3>${comic.num}. ${comic.title}</h3>
+                    <img src=${comic.img} alt="" />
+                </div>`
+            }
+
         })  
     }
 
@@ -57,7 +60,7 @@
             startingComicNum++
         }
 
-        return Promise.all(promises)
+        return Promise.all(promises) 
     }
 
 
@@ -74,7 +77,7 @@
 
     prevButton.addEventListener("click", () => {
         controller.abort()
-        currentComicNum -= numDisplayedComics 
+        currentComicNum -= numDisplayedComics
         fetchAllComics()
         .then((fetchedComics) => displayComics(fetchedComics))
     })
@@ -82,7 +85,7 @@
 
     /*** Set number of displayed comics ***/
     displayComicsSetter.addEventListener("change", (e) => {
-        numDisplayedComics = e.target.value
+        numDisplayedComics = Number(e.target.value)
         fetchAllComics()
         .then((fetchedComics) => displayComics(fetchedComics))
     })
@@ -101,9 +104,10 @@
         currentComicNum = comicNumInput.value
         
         if (currentComicNum > latestComicNum || currentComicNum < 1) {
+            document.querySelector("#comic-num-form .field").classList.add("error") 
             document.querySelector("#error-msg").classList.remove("hidden")
-              
         } else {
+            document.querySelector("#comic-num-form .field").classList.remove("error")
             document.querySelector("#error-msg").classList.add("hidden")
             fetchAllComics()
             .then((fetchedComics) => displayComics(fetchedComics))
@@ -121,5 +125,4 @@
     })
     .then(fetchAllComics)
     .then((fetchedComics) => displayComics(fetchedComics))
-
 })()
