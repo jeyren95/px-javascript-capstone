@@ -10,38 +10,37 @@
     </head>
     <body>  
         <header>
-            <div class="ui container">
+            <div class="ui container-fluid">
                 <h1>Comic Reader<i class="book icon"></i></h1>
             </div>
         </header>
       
         <main>
-            <div class="ui container">
-                <!----- Number of comics to display ----->
-                <div class="ui form display-options">
-                    <div class="field">
-                        <label for="num-displayed-comics">Select number of comics to display</label>
-                        <select id="num-displayed-comics" name="num-displayed-comics">
-                            <option value="3">3 comics</option>
-                            <option value="1">1 comic</option>
-                            <option value="5">5 comics</option>
-                        </select>
+            <div class="ui container-fluid">
+                <div class="settings">
+                    <!----- Number of comics to display ----->
+                    <div class="ui form display-options">
+                        <div class="field">
+                            <label for="num-displayed-comics">Select number of comics to display</label>
+                            <select id="num-displayed-comics" name="num-displayed-comics">
+                                <option value="3">3 comics</option>
+                                <option value="1">1 comic</option>
+                                <option value="5">5 comics</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                
-                <!----- Select comic number form ----->
-                <form id="comic-num-form" class="ui form"> 
-                    <div class="field">
-                
-                            <label for="comic-num">Which comic number would you like to see?</label>
-                            <input id="comic-num" type="number" name="comic-num" value="" />
-
-                    </div>   
-                    <p id="error-msg" class="hidden">Sorry, please select a valid comic number.</p>   
-                    <button class="ui button teal" type="submit">Go</button>     
                     
-      
-                </form>
+                    <!----- Select comic number form ----->
+                    <form id="comic-num-form" class="ui form"> 
+                        <div class="field">    
+                                <label for="comic-num">Which comic number would you like to see?</label>
+                                <input id="comic-num" type="number" name="comic-num" value="" />
+                        </div> 
+                        <p id="error-msg" class="hidden">Sorry, please select a valid comic number.</p>   
+                        <button class="ui button teal" type="submit">Go</button>     
+                    </form>
+                </div>
+
 
                 <!----- Next and previous buttons ----->
                 <div class="buttons"> 

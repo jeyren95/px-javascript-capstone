@@ -34,6 +34,7 @@
 
     /**** Fetch and display all comics ****/
     const displayComics = (fetchedComics) => {
+        console.log(fetchedComics)
         document.querySelector(".loading-sign").classList.add("hidden")
 
         fetchedComics.forEach((comic) => {
