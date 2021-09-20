@@ -45,8 +45,12 @@ header .book {
     margin-bottom: 5%;
 }
 
-.buttons #previous, .button #next {
-    margin: 0 2%;
+#previous {
+    margin-right: 1%;
+}
+
+#next {
+    margin-left: 1%;
 }
 
 

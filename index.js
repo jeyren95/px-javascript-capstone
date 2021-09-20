@@ -34,7 +34,6 @@
 
     /**** Fetch and display all comics ****/
     const displayComics = (fetchedComics) => {
-        console.log(fetchedComics)
         document.querySelector(".loading-sign").classList.add("hidden")
 
         fetchedComics.forEach((comic) => {
@@ -79,6 +78,17 @@
     prevButton.addEventListener("click", () => {
         controller.abort()
         currentComicNum -= numDisplayedComics
+        fetchAllComics()
+        .then((fetchedComics) => displayComics(fetchedComics))
+    })
+
+    /*** Random button ***/
+    const randomButton = document.querySelector("#random")
+
+    randomButton.addEventListener("click", () => {
+        controller.abort()
+        currentComicNum = Math.ceil(Math.random() * latestComicNum)
+        console.log(currentComicNum)
         fetchAllComics()
         .then((fetchedComics) => displayComics(fetchedComics))
     })
