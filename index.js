@@ -15,7 +15,7 @@
 
     const checkComicNum = (num) => {
         if (num > latestComicNum) {
-            return num - latestComicNum
+            return num % latestComicNum
         } else if (num < 1) {
             return latestComicNum + num
         } else {
@@ -109,17 +109,20 @@
 
     comicNumForm.addEventListener("submit", (e) => {
         e.preventDefault()
-        currentComicNum = Number(comicNumInput.value)
-        
-        if (currentComicNum > latestComicNum || currentComicNum < 1) {
+        let inputtedComicNum = Number(comicNumInput.value)
+
+        if (inputtedComicNum > latestComicNum || inputtedComicNum < 1) {
             document.querySelector("#comic-num-form .field").classList.add("error") 
             document.querySelector("#error-msg").classList.remove("hidden")
         } else {
+            currentComicNum = inputtedComicNum
+          
             document.querySelector("#comic-num-form .field").classList.remove("error")
             document.querySelector("#error-msg").classList.add("hidden")
             fetchAllComics()
-            .then((fetchedComics) => displayComics(fetchedComics))
+            .then((fetchedComics) => displayComics(fetchedComics))      
         }
+
         comicNumInput.value = ""  
         comicNumInput.focus()  
     })
