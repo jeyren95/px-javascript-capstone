@@ -24,10 +24,11 @@
     }
 
     // fetch comic based on number
-    const fetchComic = (num) => {
+    const fetchComic = async (num) => {
         controller = new AbortController()
+        let updatedNum = await checkComicNum(num)
 
-        return fetch(`https://xkcd.now.sh/?comic=${checkComicNum(num)}`, {signal: controller.signal})
+        return fetch(`https://xkcd.now.sh/?comic=${updatedNum}`, {signal: controller.signal})
         .then((res) => res.json())
         .catch((err) => console.log(err))
     }
