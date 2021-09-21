@@ -108,12 +108,12 @@
     const comicNumForm = document.querySelector("#comic-num-form")
 
     comicNumInput.addEventListener("change", (e) => {
-        comicNumInput.value = Number(e.target.value)
+        comicNumInput.value = e.target.value
     })
 
     comicNumForm.addEventListener("submit", (e) => {
         e.preventDefault()
-        currentComicNum = comicNumInput.value
+        currentComicNum = Number(comicNumInput.value)
         
         if (currentComicNum > latestComicNum || currentComicNum < 1) {
             document.querySelector("#comic-num-form .field").classList.add("error") 
