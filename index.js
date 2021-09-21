@@ -24,8 +24,7 @@
     }
 
     // fetch comic based on number
-    const fetchComic = async (num) => {
-        controller = new AbortController()
+    const fetchComic = async (num) => {     
         let updatedNum = await checkComicNum(num)
 
         return fetch(`https://xkcd.now.sh/?comic=${updatedNum}`, {signal: controller.signal})
@@ -53,6 +52,7 @@
         document.querySelector(".loading-sign").classList.remove("hidden")
         document.querySelector(".comics").innerHTML = ""
 
+        controller = new AbortController()
         let startingComicNum = currentComicNum - Math.floor(numDisplayedComics/2)       
         let promises = []
 
