@@ -107,10 +107,6 @@
     const comicNumInput = document.querySelector("#comic-num")
     const comicNumForm = document.querySelector("#comic-num-form")
 
-    comicNumInput.addEventListener("change", (e) => {
-        comicNumInput.value = e.target.value
-    })
-
     comicNumForm.addEventListener("submit", (e) => {
         e.preventDefault()
         currentComicNum = Number(comicNumInput.value)
